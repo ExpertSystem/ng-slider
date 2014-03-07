@@ -38,7 +38,7 @@
 					// TODO : skin
 					scope.mainSliderClass += ' jslider_round';
 
-					if( !scope.ngModel.split(";")[1])
+					if( !String(scope.ngModel).split(";")[1])
 						scope.mainSliderClass += ' jslider-single';
 
 					scope.init = function() {
@@ -315,18 +315,18 @@
 		});
 
 
-		if( !$this.settings.value.split(";")[1] ){
-			this.settings.single = true;
+		if( !String($this.settings.value).split(";")[1] ){
+		 	this.settings.single = true;
 		}		
 
 		var clickPtr;
 
 		this.domNode.find(OPTIONS.selector + "pointer").each(function( i ){
-			var value = $this.settings.value.split(";")[i];
+			var value = String($this.settings.value).split(";")[i];
 			if( value ){
 				$this.o.pointers[i] = new SliderPointer( this, i, $this );
 
-			var prev = $this.settings.value.split(";")[i-1];
+			var prev = String($this.settings.value).split(";")[i-1];
 			if( prev && value < prev ) value = prev;
 
 			value = value < $this.settings.from ? $this.settings.from : value;
